@@ -20,6 +20,12 @@ body {
   border-radius: 5px;
 }
 
+.inst-container {
+  display: flex;
+  flex-flow: column;
+  gap: 5px;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -39,6 +45,28 @@ body {
   text-decoration: none;
   font-size: 15px;
   font-family: inherit;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  margin-top: 10px;
+  transition: 0.3s;
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 15px;
+  width: 20%;
+  text-align: center;
+}
+
+.link:hover {
+  color: teal;
+  border: 1px solid teal;
+  transform: scale(1.1);
+}
+
+.text {
+  font-weight: 200;
 }
 
 .btn:focus {
