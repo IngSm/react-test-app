@@ -16,7 +16,7 @@ const Task = ({ task }) => {
                 />
             </h3>
             <p className="task-day">{task.day}</p>
-            <p className="task-desc">{task.description}</p>
+            <p className="text">{task.description}</p>
         </div>
     )
 }

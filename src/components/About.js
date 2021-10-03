@@ -8,7 +8,7 @@ const About = () => {
             <p className="text">To create task click "Add"</p>
             <p className="text">To delete task click on red cross</p>
             <p className="text">To add/remove a reminder make double click on a task</p>
-            <Link className="link" to="/">Go back</Link>   
+            <Link className="link" to="/tracker">Go back</Link>   
         </div>
     )
 }

@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import { useDispatch } from 'react-redux'
 import { add } from '../features/addTask'
+import { message } from 'antd';
 
 const AddTask = () => {
 
@@ -12,11 +13,15 @@ const AddTask = () => {
     const [description, setDescription] = useState('')
     const [reminder, setReminder] = useState(false)
 
+    const warning = () => {
+        message.warning('Please, add task!');
+      };
+
     const onSubmit = (e) => {
         e.preventDefault()
 
         if (!text) {
-            alert('Please add task')
+            warning()
             return
         }
 
@@ -29,6 +34,39 @@ const AddTask = () => {
             description: description,
             reminder: reminder
         }))
+
+        // switch (sessionStorage.getItem('user')) {
+        //     default:
+        //         console.log('nothing')
+        //     break
+        //     case 'John':
+        //         sessionStorage.user1Data = JSON.stringify({
+        //             id: id,
+        //             text: text,
+        //             day: day,
+        //             description: description,
+        //             reminder: reminder
+        //         });
+        //     break
+        //     case 'Liza':
+        //         sessionStorage.user2Data = JSON.stringify({
+        //             id: id,
+        //             text: text,
+        //             day: day,
+        //             description: description,
+        //             reminder: reminder
+        //         });
+        //     break
+        //     case 'Wo':
+        //         sessionStorage.user3Data = JSON.stringify({
+        //             id: id,
+        //             text: text,
+        //             day: day,
+        //             description: description,
+        //             reminder: reminder
+        //         });
+        //     break
+        // }
 
 
         setText('')

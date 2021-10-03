@@ -13,8 +13,8 @@ export const addTaskSlice = createSlice({
       let index = state.tasks.findIndex((item) => item.id === id.payload)
       state.tasks.splice(index, 1)
     },
-    toggle: (state) => {
-      state.tasks.map((task) => task.reminder = !task.reminder)
+    toggle: (state, id) => {
+      state.tasks.map((task) => task.id === id.payload ? (task.reminder = !task.reminder) : task.reminder)
     }
   },
 });

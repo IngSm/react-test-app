@@ -1,6 +1,6 @@
 import Task from "./Task"
 
-const Tasks = ({tasks, onToggle}) => {
+const Tasks = ({tasks}) => {
     return (
         <div>
             {tasks.map((task) => (

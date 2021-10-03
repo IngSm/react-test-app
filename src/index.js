@@ -6,10 +6,12 @@ import reportWebVitals from './reportWebVitals';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import addTaskReducer from './features/addTask'
+import logReducer from './features/Log'
 
 const store = configureStore({
   reducer: {
-    addTask: addTaskReducer
+    addTask: addTaskReducer,
+    login: logReducer
   }
 })
 

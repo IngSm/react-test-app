@@ -1,38 +1,31 @@
 import React from 'react';
-import Header from './components/Header.js'
-import Tasks from './components/Tasks.js';
-import AddTask from './components/AddTask.js';
-import Footer from './components/Footer.js';
-import About from './components/About.js';
+import Tracker from './components/Tracker.js';
+import Login from './components/Login';
 
-import { useState } from "react"
-import { useSelector } from 'react-redux'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import 'antd/dist/antd.css';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 
 function App() {
 
-  const tasks = useSelector((state) => state.addTask.tasks) 
-  const [showAddTask, setShowAddTask] = useState(false)
+  const logged = useSelector((state) => state.login.log)
 
+  useEffect(() => {
+    if(logged === false && window.location.pathname === "/tracker") {
+      window.location.href = "/"
+      localStorage.clear()
+      // sessionStorage.removeItem('user')
+    }
+    localStorage.user1 = JSON.stringify({user: "John", password: "123"});
+    localStorage.user2 = JSON.stringify({user: "Liza", password: "333"});
+    localStorage.user3 = JSON.stringify({user: "Wo", password: "312"});
+  })
   return (
     <Router>
       <div className="container">
-        <Header
-          onAdd={() => setShowAddTask(!showAddTask)}
-          showAdd={showAddTask}
-        />
-        <Route path="/" exact render={(props) => (
-          <>
-          {showAddTask && <AddTask/>}
-        {tasks.length > 0 ? 
-          <Tasks
-            tasks={tasks}
-          />
-        : 'No tasks to show'}
-          </>
-        )} />
-        <Route path='/about' component={About}/>
-        <Footer/>
+      {!logged && <Login/>}
+      <Route path="/tracker" component={Tracker}/>
       </div>
     </Router>
   );
