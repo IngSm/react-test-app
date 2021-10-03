@@ -112,6 +112,14 @@ body {
   justify-content: space-between;
 }
 
+.task-day {
+  font-weight: 500;
+}
+
+.task-desc {
+  font-weight: 300;
+}
+
 .add-form {
   margin-bottom: 40px;
 }

@@ -1,8 +1,15 @@
 import { useState } from 'react'
 
-const AddTask = ({onAdd}) => {
+import { useDispatch } from 'react-redux'
+import { add } from '../features/addTask'
+
+const AddTask = () => {
+
+    const dispatch = useDispatch()
+
     const [text, setText] = useState('')
     const [day, setDay] = useState('')
+    const [description, setDescription] = useState('')
     const [reminder, setReminder] = useState(false)
 
     const onSubmit = (e) => {
@@ -13,10 +20,20 @@ const AddTask = ({onAdd}) => {
             return
         }
 
-        onAdd({ text, day, reminder })
+        let id = Math.floor(Math.random() * 10000) + 1
+
+        dispatch(add({
+            id: id,
+            text: text,
+            day: day,
+            description: description,
+            reminder: reminder
+        }))
+
 
         setText('')
         setDay('')
+        setDescription('')
         setReminder(false)
     }
 
@@ -38,6 +55,15 @@ const AddTask = ({onAdd}) => {
                         placeholder="Add day & time"
                         value={day}
                         onChange={(e) => setDay(e.target.value)}
+                    />
+            </div>
+            <div className="form-control">
+                    <label>Day & Time</label>
+                    <input
+                        type="text"
+                        placeholder="Description"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
                     />
             </div>
             <div className="form-control form-control-check">
